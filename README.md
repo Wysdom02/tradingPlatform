@@ -67,10 +67,3 @@ src/
 
 ## For folder structure details read FOLDER_STRUCTURE.md
 
-
-
-## Contact
-
-For questions and support, please contact:
-- Email: careers@goquant.io
-- CC: jennifer.carreno@goquant.io
