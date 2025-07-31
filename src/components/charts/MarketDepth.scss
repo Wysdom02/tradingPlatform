@@ -1,0 +1,129 @@
+.market-depth {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0;
+  }
+
+  &__mid-price {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2196f3;
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(33, 150, 243, 0.1);
+    border-radius: 4px;
+  }
+
+  &__impact {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(33, 150, 243, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+  }
+
+  &__impact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h6 {
+      margin: 0;
+      color: #2196f3;
+    }
+  }
+
+  &__impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  &__impact-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    span {
+      font-size: 0.75rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    strong {
+      font-size: 0.875rem;
+      color: rgba(0, 0, 0, 0.87);
+    }
+  }
+
+  .recharts-wrapper {
+    padding-left: 10px;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    font-size: 13px;
+    font-weight: 500;
+    fill: rgba(0, 0, 0, 0.75);
+  }
+
+  .recharts-yAxis {
+    .recharts-cartesian-axis-tick-value {
+      width: 50px;
+    }
+  }
+
+  .recharts-tooltip-wrapper {
+    .recharts-default-tooltip {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      border-radius: 4px;
+      padding: 0.75rem !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 13px;
+
+      .recharts-tooltip-item {
+        padding: 4px 0;
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+  }
+
+  .recharts-legend-wrapper {
+    padding: 0.5rem;
+    
+    .recharts-legend-item {
+      padding: 0.25rem 0.75rem;
+      margin-right: 1rem !important;
+
+      .recharts-legend-item-text {
+        color: rgba(0, 0, 0, 0.87);
+        font-size: 13px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .recharts-cartesian-grid-horizontal,
+  .recharts-cartesian-grid-vertical {
+    line {
+      stroke: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .recharts-cartesian-axis-line {
+    stroke: rgba(0, 0, 0, 0.2);
+  }
+} 

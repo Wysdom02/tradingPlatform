@@ -1,0 +1,279 @@
+.orderbook {
+  &__container {
+    padding: 1.5rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  &__table-container {
+    position: relative;
+
+    &--expanded {
+      min-height: 720px; // Fixed minimum height for expanded state to fit 20 rows + header
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+
+    th {
+      padding: 0.5rem;
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-right: 1px solid rgba(128, 128, 128, 0.2);
+      background-color: rgba(0, 0, 0, 0.05);
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    td {
+      padding: 0.375rem 0.5rem;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+      border-right: 1px solid rgba(128, 128, 128, 0.1);
+      min-height: 32px; // Ensure consistent row height
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    // Add vertical line between bid and ask sections
+    tr {
+      td:nth-child(3) {
+        border-right: 2px solid rgba(128, 128, 128, 0.3);
+      }
+    }
+  }
+
+  &__table-header {
+    text-align: center !important;
+    padding: 0.75rem !important;
+    
+    &--bid {
+      background-color: rgba(76, 175, 80, 0.05);
+    }
+    
+    &--ask {
+      background-color: rgba(244, 67, 54, 0.05);
+    }
+  }
+
+  &__price {
+    font-weight: 500;
+    
+    &--bid {
+      color: #4caf50;
+    }
+    
+    &--ask {
+      color: #f44336;
+    }
+    
+    &--highlight {
+      position: relative;
+      font-weight: 600;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -8px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        border-radius: 2px;
+      }
+    }
+
+    &--simulated {
+      position: relative;
+      font-weight: 700;
+      background: linear-gradient(45deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.05));
+      border: 2px dashed #2196f3;
+      border-radius: 4px;
+      
+      &::after {
+        content: '👤';
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+      }
+    }
+
+    &--consumed {
+      position: relative;
+      background: linear-gradient(45deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.05));
+      border-left: 4px solid #ff9800;
+      
+      &::after {
+        content: '⚡';
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__price--bid.orderbook__price--highlight {
+    background-color: rgba(76, 175, 80, 0.08);
+    
+    &::before {
+      background-color: #4caf50;
+    }
+  }
+
+  &__price--ask.orderbook__price--highlight {
+    background-color: rgba(244, 67, 54, 0.08);
+    
+    &::before {
+      background-color: #f44336;
+    }
+  }
+
+  &__cell--placeholder {
+    height: 32px; // Match the height of regular rows
+    background-color: rgba(128, 128, 128, 0.1); // Light grey background
+    border: none;
+  }
+
+  &__simulation-legend {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background-color: rgba(33, 150, 243, 0.05);
+    border-radius: 4px;
+    border-left: 4px solid #2196f3;
+  }
+
+  &__legend-items {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  &__legend-indicator {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 12px;
+
+    &--simulated {
+      background: linear-gradient(45deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.05));
+      border: 1px dashed #2196f3;
+    }
+
+    &--consumed {
+      background: linear-gradient(45deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.05));
+      border-left: 3px solid #ff9800;
+    }
+  }
+
+  &__toggle-button {
+    margin-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 0 4px 4px;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &__simulation-info {
+    margin: 1rem 0;
+    padding: 0.75rem;
+    background-color: rgba(25, 118, 210, 0.08);
+    border-radius: 4px;
+  }
+
+  &__chart {
+    margin-top: 2rem;
+    height: 300px;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+
+    // Add left padding for y-axis labels
+    .recharts-wrapper {
+      padding-left: 10px;
+    }
+
+    // Increase y-axis width
+    .recharts-yAxis {
+      .recharts-cartesian-axis-tick-value {
+        width: 60px; // More space for price values
+      }
+    }
+
+    // Ensure tooltip doesn't get cut off
+    .recharts-tooltip-wrapper {
+      .recharts-tooltip-item-name {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+
+    .recharts-default-tooltip {
+      background-color: rgba(255, 255, 255, 0.95) !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      border-radius: 4px;
+      padding: 0.5rem !important;
+    }
+
+    // Add margin to legend items
+    .recharts-legend-item {
+      padding: 0.25rem 0.5rem;
+      margin-right: 1rem !important;
+    }
+
+    // Ensure chart container has enough space
+    .recharts-surface {
+      overflow: visible;
+    }
+
+    // Add right margin for last y-axis tick
+    .recharts-cartesian-axis-tick:last-child {
+      margin-right: 10px;
+    }
+  }
+
+  &__history {
+    margin: 2rem 0;
+    
+    .orderbook__section-title {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__history-row {
+    &--buy {
+      &:hover {
+        background-color: rgba(76, 175, 80, 0.05);
+      }
+    }
+    
+    &--sell {
+      &:hover {
+        background-color: rgba(244, 67, 54, 0.05);
+      }
+    }
+  }
+} 
